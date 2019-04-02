@@ -1,0 +1,36 @@
+.mac_index{
+    top: 0%;
+    background-color:rgba(252, 243, 243, 0.384);
+    /* background-image: url(http://cdn.osxdaily.com/wp-content/uploads/2018/06/macos-mojave-night-lightened-r.jpg); */
+    /* background-image: url(http://lemonlawfacts.com/wp-content/uploads/2018/11/Mac-Wallpaper-589.jpg); */
+    background-size: 100% ; 
+    /* height: 1000px; */
+    /* border: 1px solid black;   */
+}
+
+
+
+
+.box{
+    /* height:100px; */
+    width:100%;
+    /* background:pink; */
+    /* background-color:rgba(7, 7, 7, 0.863); */
+    background-image: url(http://cdn.osxdaily.com/wp-content/uploads/2018/06/macos-mojave-night-lightened-r.jpg);
+    /* background-image: url(http://lemonlawfacts.com/wp-content/uploads/2018/11/Mac-Wallpaper-589.jpg);  */
+    background-size: 100% ; 
+    margin:0px auto;
+    height: 1000px;
+  }
+  .box:before{
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 0;
+    height: 100%;
+  }
+  .text{
+    display: inline-block;
+    vertical-align: middle;/* 保证文字垂直居中 */
+    
+  }

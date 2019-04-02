@@ -1,0 +1,74 @@
+.index{
+    /* background-color:rgba(7, 7, 7, 0.863); */
+    background-image: url(http://cdn.osxdaily.com/wp-content/uploads/2018/06/macos-mojave-night-lightened-r.jpg);
+    /* background-image: url(http://lemonlawfacts.com/wp-content/uploads/2018/11/Mac-Wallpaper-589.jpg); */
+    background-size: 100% ; 
+    /* height: 1000px; */
+    /* border: 1px solid black;   */
+    padding: 1%
+}
+
+.tt:hover{
+    width: 50px;
+    height: 50px;
+}
+
+.tt{
+    width: 35px;
+    height: 35px;
+    
+}
+
+.dock{
+    z-index: 1;
+    
+}
+
+.aa{
+    border:'solid' ;
+    background-image: url(https://lukehorvat.github.io/react-osx-dock/images/osx/finder.png); 
+    background-repeat: no-repeat;
+    background-size: 100% ; 
+}
+
+.bb{
+    border:'solid' ;
+    background-image: url(https://lukehorvat.github.io/react-osx-dock/images/osx/settings.png); 
+    background-repeat: no-repeat;
+    background-size: 100% ; 
+}
+
+.cc{
+    border:'solid' ;
+    background-image: url(https://lukehorvat.github.io/react-osx-dock/images/osx/app-store.png); 
+    background-repeat: no-repeat;
+    background-size: 100% ; 
+}
+
+
+.dd{
+    border:'solid' ;
+    background-image: url(https://lukehorvat.github.io/react-osx-dock/images/osx/preview.png); 
+    background-repeat: no-repeat;
+    background-size: 100% ; 
+}
+
+.ee{
+    border:'solid' ;
+    background-image: url(https://lukehorvat.github.io/react-osx-dock/images/osx/terminal.png); 
+    background-repeat: no-repeat;
+    background-size: 100% ; 
+}
+
+.ww{
+    background-color: gray;
+    opacity: 0.8;
+}
+
+.win {
+    padding: 10px;
+    border-radius: 0px 0px 5px 5px;
+    background-color:#ECECEC
+  }
+
+
