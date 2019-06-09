@@ -26,43 +26,72 @@
 
 .aa{
     border:'solid' ;
-    background-image: url(https://lukehorvat.github.io/react-osx-dock/images/osx/finder.png); 
+    background-image: url(../images/finder.png); 
     background-repeat: no-repeat;
-    background-size: 100% ; 
+    background-size: 70% ; 
+    background-position: center;
 }
 
 .bb{
     border:'solid' ;
-    background-image: url(https://lukehorvat.github.io/react-osx-dock/images/osx/settings.png); 
+    background-image: url(../images/settings.png); 
     background-repeat: no-repeat;
-    background-size: 100% ; 
+    background-size: 70% ; 
+    background-position: center;
 }
 
 .cc{
     border:'solid' ;
-    background-image: url(https://lukehorvat.github.io/react-osx-dock/images/osx/app-store.png); 
+    background-image: url(../images/app-store.png); 
     background-repeat: no-repeat;
-    background-size: 100% ; 
+    background-size: 70% ; 
+    background-position: center;
 }
 
 
 .dd{
     border:'solid' ;
-    background-image: url(https://lukehorvat.github.io/react-osx-dock/images/osx/preview.png); 
+    background-image: url(../images/preview.png); 
     background-repeat: no-repeat;
-    background-size: 100% ; 
+    background-size: 70% ; 
+    background-position: center;
 }
 
 .ee{
     border:'solid' ;
-    background-image: url(https://lukehorvat.github.io/react-osx-dock/images/osx/terminal.png); 
+    background-image: url(../images/trash.png); 
     background-repeat: no-repeat;
-    background-size: 100% ; 
+    background-size: 70% ; 
+    background-position: center;
+}
+
+.terminal{
+    border:'solid' ;
+    background-image: url(../images/terminal.png); 
+    background-repeat: no-repeat;
+    background-size: 70% ; 
+    background-position: center;
+}
+
+.chrome{
+    border:'solid' ;
+    background-image: url(../images/chrome.png); 
+    background-repeat: no-repeat;
+    background-size: 70% ; 
+    background-position: center;
+}
+.win10{
+    border:'solid' ;
+    background-image: url(../images/win10.png); 
+    background-repeat: no-repeat;
+    background-size: 70% ; 
+    background-position: center;
 }
 
 .ww{
     background-color: gray;
     opacity: 0.8;
+    border-radius: '50px'
 }
 
 .win {

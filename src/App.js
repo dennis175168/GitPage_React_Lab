@@ -9,6 +9,7 @@ import test from './test';
 import Header from './header';
 import Resume from './components/Resume';
 import MacLogin from './components/MacLogin';
+import WinResume from './components/WinResume';
 
 class App extends Component {
   render() {
@@ -42,6 +43,7 @@ class App extends Component {
               <Route exact path="/" component={Header}/>
               <Route exact path="/resume" component={Resume}/>
               <Route exact path="/login" component={MacLogin}/>
+              <Route exact path="/WinResume" component={WinResume}/>
               <Route exact path="/test" component={test}/>
           </Switch>
         </div>

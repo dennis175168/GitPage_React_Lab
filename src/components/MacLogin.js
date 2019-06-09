@@ -33,8 +33,7 @@ class MacLogin extends Component {
       <div class="box">
         <p class="text">
         <div>
-          <Image style={{width:'100px' , 'border-radius': '100px' , border : 'black', top: '50%',bottom: '50%'}} src="https://scontent.ftpe4-2.fna.fbcdn.net/v/t1.0-9/29261971_1957986304230142_8155743055123578880_n.jpg?_nc_cat=110&_nc_ht=scontent.ftpe4-2.fna&oh=2fa660e8a91439b143f307614d5436cb&oe=5CB9FEC9" circle />   
-
+          <Image style={{width:'100px' , 'border-radius': '100px' , border : 'black', top: '50%',bottom: '50%'}} src="https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/11701043_1053316741363774_1251831100533488450_n.jpg?_nc_cat=109&_nc_ht=scontent-tpe1-1.xx&oh=d3f8f1110e11fb967cdea617e285132f&oe=5D942641" circle />   
         </div>
 
         <Text style={{color:"#FFFFFF", marginTop:'10px'}}>
@@ -53,7 +52,7 @@ class MacLogin extends Component {
           {/* <FormControl style={{width:'150px',height:'30px'}}  aria-label="Small" aria-describedby="inputGroup-sizing-sm" /> */}
           <Row>
             <Col>
-              <input type="password" class="form-control form-control-sm" onClick={this.insert_pwd} style={{backgroundColor:'#8594A2' ,opacity:0.25}}></input>
+              <input type="text" class="form-control form-control-sm" value="Let's Go" onClick={this.insert_pwd} style={{backgroundColor:'#8594A2' ,opacity:0.25}}></input>
             </Col>
             <Col style={{marginLeft:'5px', display: this.state.insert_pwd}}>
               <a href="#/resume"><img  width="30px"   src={mainLogo}  alt="fireSpot"/></a>

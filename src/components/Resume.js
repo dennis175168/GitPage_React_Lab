@@ -1,13 +1,16 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import { HashRouter } from 'react-router-dom';
-import { Grid, Row, Col, Image} from 'react-bootstrap';
-import { Window, TitleBar, Text} from 'react-desktop/macOs';
+import { Grid, Row, Col, Image, Table , Jumbotron , Card} from 'react-bootstrap';
+import { Window, TitleBar, Text, SearchField} from 'react-desktop/macOs';
 import Dock from "react-osx-dock";
-import '../css/Resume.css'
+import {Timeline, TimelineEvent} from 'react-event-timeline'
+import '../css/Resume.css';
 import apple  from'../images/apple.png';
-import trash from "../images/trash.png";
-import code from "../images/512.png";
+import wifi from "../images/mac-wifi.png";
+import battery from "../images/mac-battery.png";
+import star from "../images/icons8-rating-200.png";
+
 
 
 class Resume extends Component {
@@ -20,15 +23,16 @@ class Resume extends Component {
       data_edu: [],
       data_lauguage:[],
       data_skill:[],
-
-
-      Profile : 'none',
-      summary:'none',
+      Profile : 'inline',
+      summary:'inline',
       edu:'none',
       skill:'none',
-      tooles:'none'
+      tools:'none'
     };
     this.summary = this.summary.bind(this);
+    this.Tools = this.Tools.bind(this);
+    this.Edu = this.Edu.bind(this);
+    this.Program = this.Program.bind(this);
   }
 
   componentDidMount() {
@@ -81,10 +85,34 @@ class Resume extends Component {
     }
 
   summary() {
-    if (this.state.summary == 'block') {
+    if (this.state.summary == 'inline') {
       this.setState({ summary: 'none' });
     } else {
-      this.setState({ summary: 'block' });
+      this.setState({ summary: 'inline' });
+    }
+  }
+
+  Tools() {
+    if (this.state.tools == 'inline') {
+      this.setState({ tools: 'none' });
+    } else {
+      this.setState({ tools: 'inline' });
+    }
+  }
+
+  Program() {
+    if (this.state.skill == 'inline') {
+      this.setState({ skill: 'none' });
+    } else {
+      this.setState({ skill: 'inline' });
+    }
+  }
+
+  Edu() {
+    if (this.state.edu == 'inline') {
+      this.setState({ edu: 'none' });
+    } else {
+      this.setState({ edu: 'inline' });
     }
   }
 
@@ -92,87 +120,127 @@ class Resume extends Component {
   render() {
     var h =window.innerHeight;
     var w =window.innerWidth;
-
-    // var qq = [{"school":"國立台南二中","start":"40725"},{"school":"中原大學","start":"41821"}]
     var qq = this.state.data_edu
 
     return (
       <div>
-        <div style={{width:'100%', height:'28px', backgroundColor:'#1A2940', alignSelf:'left' }}>
-        <img src={apple} width="1%" />
-        </div>
-        
-        <div  className="index" style={{ height: h-28, paddingLeft:'10%' ,paddingRight:'10%'}} >
-
+        {/* header */}
+        <div style={{width:'100%', height:'28px', backgroundColor:'#1A2940'}} className="pull-right">
+          <Row style={{width:'100%'}} >
+            <Col>
+              <img src={apple} width="25%" />
+            </Col>
+            <Col style={{color:'#FFFFFF' ,paddingLeft:'0%'}}>
+              <p >Dennis</p>
+            </Col>
+            <Col style={{color:'#FFFFFF' ,paddingLeft:'1%'}}>
+              <p >Handson</p>
+            </Col>
+            <Col style={{color:'#FFFFFF' ,paddingLeft:'1%'}}>
+              <p >Awesome</p>
+            </Col>
+            <Col style={{color:'#FFFFFF' ,paddingLeft:'1%'}}>
+              <p >Nice</p>
+            </Col>
+            <Col style={{color:'#FFFFFF' ,paddingLeft:'1%'}}>
+              <p >Help</p>
+            </Col>
+            <Col md={7}>md=4</Col>
+            <Col >
+              <img src={wifi} width="40%" />
+            </Col>
+            <Col>
+              <img src={battery} width="25%" />
+            </Col>
+            <Col style={{color:'#FFFFFF' ,paddingLeft:'1%', textAlign:'right', float:'right'}} >
+              <p >Mon 9:41 AM</p>
+            </Col>
+          </Row>
           
-
+        </div>
+        {/* Content */}
+        <div  className="index" style={{ height: h-28, paddingLeft:'5%' ,paddingRight:'5%'}} >
           <Row>
-            <Col xs={12} md={3}>
-              
-            </Col>
-
-            <Col xs={6} md={3} >
-              <Window chrome height="100%" width='100%' padding="10px" verticalAlignment='center' style={{display:this.state.Profile}}>
-                <TitleBar controls inset>
-                </TitleBar>
-                <Text style={{ padding:'35px'}}>
-                  <Image style={{width:'100px' , 'border-radius': '100px' , 'paddingTop':'5%'}} src="https://scontent.ftpe4-2.fna.fbcdn.net/v/t1.0-9/29261971_1957986304230142_8155743055123578880_n.jpg?_nc_cat=110&_nc_ht=scontent.ftpe4-2.fna&oh=2fa660e8a91439b143f307614d5436cb&oe=5CB9FEC9" circle />
+            {/* <Col xs={12} md={3}>
+            
+            </Col> */}
+            {/* Profile */}
+            <Col xs={6} md={3} style={{display:this.state.Profile }}>
+              <Window chrome='true' height={h*0.5} width='100%' padding="0px" >
+                <TitleBar title="Profile" controls/>
+                <div style={{ padding:'35px' , fontSize:'10px'}}>
+                  <Image style={{border:'1px #000000 solid', width:'100px' , 'border-radius': '160px' ,'width':'60%' , 'marginBottom': '20px'}} src="https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/11701043_1053316741363774_1251831100533488450_n.jpg?_nc_cat=109&_nc_ht=scontent-tpe1-1.xx&oh=d3f8f1110e11fb967cdea617e285132f&oe=5D942641" roundedCircle />
                   <h4>{(this.state.data["name"])}</h4>
-                  <p>Age: {(this.state.data["age"])}</p>
+                  <p>{(this.state.data["age"])} years old / {(this.state.data["mail"])} </p>
                   <p>Address: {(this.state.data["address"])}</p>
-                  <p>E-Mail: {(this.state.data["mail"])}</p>
-                </Text>
+                </div>
               </Window>
-              
             </Col>
-
-            <Col xs={12} md={4}>
-              <Window chrome='true' height="100%" width='100%' padding="10px" style={{display:this.state.summary}}>
+            {/* Summary */}
+            <Col xs={12} md={5} style={{display:this.state.summary}}>
+              <Window chrome='true' height="100%" width='100%' padding="0px" >
                 <TitleBar title="Summary" controls/>
-                <div style={{size:'100px' , padding:'25px'}}>{(this.state.data["summary"])}</div>
+                {/* <div style={{size:'100px' , padding:'25px'}}>Summary</div>
+                <div style={{size:'100px' , padding:'25px'}}>{(this.state.data["summary"])}</div> */}
+                <Jumbotron fluid>
+                  <h1>Summary</h1>
+                  <p>
+                  {(this.state.data["summary"])}
+                  </p>
+                </Jumbotron>
               </Window>
             </Col>
-
-            <Col xs={6} md={4} style={{paddingTop:'20px'}}>
-                <TitleBar title="Familiar with Tools " controls/>
-                <div className='win'>
-                {this.state.data_skill.map(function (object, i) {
-                     return (
-                      <li>{object.Tools}</li>
-                     )
-                })}
-                
-                </div>
-            </Col>
-
-            <Col xs={6} md={4} style={{paddingTop:'20px'}}>
-                <TitleBar title="Database & Program Skills " controls/>
-                <div  className='win'>
-                <ul class="list-group">
-                {this.state.data_lauguage.map(function (object, i) {
-                     return (
-                      <li class="list-group-item">{object.Skill}</li>
-                     )
-                })}
-                </ul>
-                </div>
-              
-            </Col>
-
-            <Col xs={6} md={4} style={{paddingTop:'20px'}}>
+            {/* Education */}
+            <Col xs={6} md={4} style={{paddingTop:'20px'}} style={{display:this.state.edu}}><br/>
                 <TitleBar title="Education" controls/>
                 <div className='win'>
-                {this.state.data_edu.map(function (object, i) {
+                  <Timeline>
+                    {this.state.data_edu.map(function (object, i) {
+                      return (
+                        <TimelineEvent title={object.school} createdAt={object.start} icon=''>
+                          Content
+                        </TimelineEvent>
+                      )
+                    })}
+                  </Timeline>
+                </div>
+            </Col>
+            {/* Tools */}
+            <Col xs={7} md={4} style={{paddingTop:'20px' , marginTop:'100px'}} style={{display:this.state.tools}}>
+                <br/>
+                <TitleBar title="Familiar with Tools " controls/>
+                <div className='win' style={{'height':h*0.4, 'overflow-y': 'scroll'}}>
+                {this.state.data_skill.map(function (object, i) {
                      return (
-                      <li>{object.school}</li>
+                      <div class="card bg-primary text-white" style={{marginBottom:'10px'}}>
+                        <div class="card-header">{object.Tools} <br/> {object.Description}</div>
+                      </div>
                      )
                 })}
-
-
                 
+                
+                
+                </div>
+            </Col>
+            {/* Program */}
+            <Col xs={6} md={4} style={{paddingTop:'20px'}} style={{display:this.state.skill}}><br/>
+                <TitleBar title="Database & Program Skills " controls/>
+                <div className='win' style={{'height':h*0.35, 'overflow-y': 'scroll'}}>
+                <table>
+                {this.state.data_lauguage.map(function (object, i) {
+                     return (
+                      <tr>
+                        <td  style={{height:h*0.05 , padding:'10px'}}>{object.Skill} </td>
+                        <td  style={{height:h*0.05 , padding:'10px'}}><img src={star} width="30px"/><img src={star} width="30px"/></td>
+                      </tr>
+                     )
+                })}
+                </table>
                 </div>
               
             </Col>
+            
+            
 
             <Col className='dock'  xs={12} md={12}>
               
@@ -201,14 +269,15 @@ class Resume extends Component {
 
                     
         </div>
-        <div style={{ bottom: '0px',position: 'fixed', 'z-index':'2', paddingLeft:'25%'  }}>
+        {/* Docker */}
+        <div style={{ bottom: '0px',position: 'fixed', 'z-index':'2', paddingLeft:'25%' , }}>
             <Dock width={600} magnification={1} magnifyDirection="up" backgroundClassName='ww' >
 
                 <Dock.Item className="aa" style={{border:'solid'}} onClick={() => {
-              if (this.state.Profile == 'block') {
+              if (this.state.Profile == 'inline') {
                 this.setState({ Profile: 'none' });
               } else {
-                this.setState({ Profile: 'block' });
+                this.setState({ Profile: 'inline' });
               }
             }} >
                   {/* <img style={{ width:'50px', marginRight:'1px'}}  src={trash} />  */}
@@ -217,23 +286,25 @@ class Resume extends Component {
                 <Dock.Item className="bb" style={{border:'solid'}} onClick={this.summary} >
                 </Dock.Item>
 
-                <Dock.Item className="cc" style={{border:'solid'}}  >
+                <Dock.Item className="cc" style={{border:'solid'}} onClick={this.Tools}  >
                 </Dock.Item>
 
-                <Dock.Item className="dd" style={{border:'solid'}}  >
+                <Dock.Item className="dd" style={{border:'solid'}} onClick={this.Program} >
                 </Dock.Item>
 
-                <Dock.Item className="ee" style={{border:'solid'}}  >
+                <Dock.Item className="chrome" style={{border:'solid'}} onClick={this.Edu} >
                 </Dock.Item>
 
-                <Dock.Item className="ee" style={{border:'solid'}}  >
-                </Dock.Item>
-
-                <Dock.Item className="ee" style={{border:'solid'}}  >
+                <Dock.Item className="terminal" style={{border:'solid'}}  >
                 </Dock.Item>
 
                 <Dock.Item className="ee" style={{border:'solid'}}  >
                 </Dock.Item>
+
+                <Dock.Item className="win10" style={{border:'solid'}} onClick={()=>{
+                  window.location = '#/WinResume';
+                }}  >
+                </Dock.Item>   
             </Dock>
         </div>
       </div>
