@@ -5,6 +5,7 @@ import { Grid, Row, Col, Image, Table , Jumbotron , Card} from 'react-bootstrap'
 import { Window, TitleBar, Text, SearchField} from 'react-desktop/macOs';
 import Dock from "react-osx-dock";
 import {Timeline, TimelineEvent} from 'react-event-timeline'
+import ReactStoreIndicator from 'react-score-indicator'
 import '../css/Resume.css';
 import apple  from'../images/apple.png';
 import wifi from "../images/mac-wifi.png";
@@ -24,7 +25,7 @@ class Resume extends Component {
       data_lauguage:[],
       data_skill:[],
       Profile : 'inline',
-      summary:'inline',
+      summary:'none',
       edu:'none',
       skill:'none',
       tools:'none'
@@ -33,10 +34,13 @@ class Resume extends Component {
     this.Tools = this.Tools.bind(this);
     this.Edu = this.Edu.bind(this);
     this.Program = this.Program.bind(this);
+    this.skill_score = this.skill_score.bind(this);
   }
 
   componentDidMount() {
     this.get_data();
+    this.setState({skill_name:'Click button'});
+    this.setState({skill_score:0})
   }
 
 
@@ -116,6 +120,10 @@ class Resume extends Component {
     }
   }
 
+  skill_score (s){
+    //this.setState({ score: s });
+  }
+
 
   render() {
     var h =window.innerHeight;
@@ -166,30 +174,22 @@ class Resume extends Component {
             </Col> */}
             {/* Profile */}
             <Col xs={6} md={3} style={{display:this.state.Profile }}>
-              <Window chrome='true' height={h*0.5} width='100%' padding="0px" >
+              <Window chrome='true' height={h*0.7} width='100%' padding="0px" >
                 <TitleBar title="Profile" controls/>
                 <div style={{ padding:'35px' , fontSize:'10px'}}>
                   <Image style={{border:'1px #000000 solid', width:'100px' , 'border-radius': '160px' ,'width':'60%' , 'marginBottom': '20px'}} src="https://scontent-tpe1-1.xx.fbcdn.net/v/t1.0-9/11701043_1053316741363774_1251831100533488450_n.jpg?_nc_cat=109&_nc_ht=scontent-tpe1-1.xx&oh=d3f8f1110e11fb967cdea617e285132f&oe=5D942641" roundedCircle />
                   <h4>{(this.state.data["name"])}</h4>
                   <p>{(this.state.data["age"])} years old / {(this.state.data["mail"])} </p>
                   <p>Address: {(this.state.data["address"])}</p>
+                  <h5>Summary</h5>
+                  <p>
+                  {(this.state.data["summary"])}
+                  </p>
                 </div>
               </Window>
             </Col>
             {/* Summary */}
-            <Col xs={12} md={5} style={{display:this.state.summary}}>
-              <Window chrome='true' height="100%" width='100%' padding="0px" >
-                <TitleBar title="Summary" controls/>
-                {/* <div style={{size:'100px' , padding:'25px'}}>Summary</div>
-                <div style={{size:'100px' , padding:'25px'}}>{(this.state.data["summary"])}</div> */}
-                <Jumbotron fluid>
-                  <h1>Summary</h1>
-                  <p>
-                  {(this.state.data["summary"])}
-                  </p>
-                </Jumbotron>
-              </Window>
-            </Col>
+            
             {/* Education */}
             <Col xs={6} md={4} style={{paddingTop:'20px'}} style={{display:this.state.edu}}><br/>
                 <TitleBar title="Education" controls/>
@@ -208,15 +208,23 @@ class Resume extends Component {
             {/* Tools */}
             <Col xs={7} md={4} style={{paddingTop:'20px' , marginTop:'100px'}} style={{display:this.state.tools}}>
                 <br/>
-                <TitleBar title="Familiar with Tools " controls/>
-                <div className='win' style={{'height':h*0.4, 'overflow-y': 'scroll'}}>
+                <TitleBar title="Familiar with Tools" controls/>
+                <div className='win' style={{'height':h*0.4}}>
+                <div class="list-group">
+                  
+                
                 {this.state.data_skill.map(function (object, i) {
                      return (
-                      <div class="card bg-primary text-white" style={{marginBottom:'10px'}}>
-                        <div class="card-header">{object.Tools} <br/> {object.Description}</div>
-                      </div>
+                      // <div class="card bg-primary text-white" style={{marginBottom:'10px'}}>
+                      //   <div class="card-header">{object.Tools} <br/> {object.Description}</div>
+                      // </div>
+                      <a href="#" class="list-group-item list-group-item-action">
+                        <div><h4>{object.Tools}</h4></div>
+                        <div>{object.Description}</div>
+                      </a>
                      )
                 })}
+                </div>
                 
                 
                 
@@ -225,16 +233,36 @@ class Resume extends Component {
             {/* Program */}
             <Col xs={6} md={4} style={{paddingTop:'20px'}} style={{display:this.state.skill}}><br/>
                 <TitleBar title="Database & Program Skills " controls/>
-                <div className='win' style={{'height':h*0.35, 'overflow-y': 'scroll'}}>
+                <div className='win' style={{'height':h*0.45, 'overflow-y': 'scroll'}}>
                 <table>
-                {this.state.data_lauguage.map(function (object, i) {
-                     return (
-                      <tr>
-                        <td  style={{height:h*0.05 , padding:'10px'}}>{object.Skill} </td>
-                        <td  style={{height:h*0.05 , padding:'10px'}}><img src={star} width="30px"/><img src={star} width="30px"/></td>
-                      </tr>
-                     )
-                })}
+                  <tr>
+                  <td  style={{height:h*0.05 , padding:'30px'}}>
+                    {this.state.data_lauguage.map(function (object, i) {
+                        return (
+                            
+                              <div style={{ paddingBottom:'10px'}}><button style={{width:200}} type="button" class="btn btn-primary" onClick={()=>{
+                                this.setState({skill_name: object.Skill});this.setState({skill_score: object.score})
+                              }}>
+                                {object.Skill} 
+                              </button></div>
+                            
+                        )
+                    }.bind(this))}
+                    </td>
+                    <td >
+                      <div>
+                        <ReactStoreIndicator
+                                  width= {200}
+                                  value={this.state.skill_score}
+                                  maxValue={5}
+                        />  
+                      </div>
+                      <div>
+                        <h4>{this.state.skill_name}</h4>
+                      </div>
+                      
+                    </td>
+                  </tr>
                 </table>
                 </div>
               
